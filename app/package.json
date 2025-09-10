@@ -1,0 +1,33 @@
+{
+    "name": "card-service",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "ts-node service/card-service/handler.ts",
+        "build": "esbuild src/handlers/*.ts --bundle --outdir=dist/ --platform=node"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/aws-lambda": "^8.10.152",
+        "@types/node": "^24.3.1",
+        "@types/uuid": "^10.0.0",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.9.2"
+    },
+    "dependencies": {
+        "@aws-sdk/client-dynamodb": "^3.882.0",
+        "@aws-sdk/client-s3": "^3.882.0",
+        "@aws-sdk/client-secrets-manager": "^3.882.0",
+        "@aws-sdk/client-sqs": "^3.882.0",
+        "@aws-sdk/lib-dynamodb": "^3.882.0",
+        "@aws-sdk/s3-request-presigner": "^3.882.0",
+        "aws-sdk": "^2.1692.0",
+        "dotenv": "^17.2.2",
+        "aws-lambda": "^1.0.7",
+        "esbuild": "^0.25.9",
+        "uuid": "^11.1.0"
+    }
+}

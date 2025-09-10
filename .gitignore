@@ -1,0 +1,21 @@
+
+# Node modules
+**/node_modules/
+
+# Lambda zips
+**/*.zip
+
+# Environment variables
+.env
+
+# Terraform state
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+terraform/.terraform/
+
+# Dist or build folders (si dist/ es solo generado)
+dist/
+
+# Editor folders
+.vscode/
+.idea/
