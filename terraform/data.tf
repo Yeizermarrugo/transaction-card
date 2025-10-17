@@ -52,7 +52,10 @@ data "aws_iam_policy_document" "lambda_policy_full" {
     ]
     resources = [
       aws_sqs_queue.create_request_card.arn,
-      aws_sqs_queue.error_create_request_card.arn
+      aws_sqs_queue.error_create_request_card.arn,
+      aws_sqs_queue.start_payment.arn,
+      aws_sqs_queue.check_balance.arn,
+      aws_sqs_queue.transaction.arn
     ]
   }
   statement {
@@ -63,7 +66,25 @@ data "aws_iam_policy_document" "lambda_policy_full" {
       "s3:DeleteObject"
     ]
     resources = [
-      "${aws_s3_bucket.transactions_report.arn}/*"
+      "${aws_s3_bucket.transactions_report.arn}/*",
+      "${aws_s3_bucket.catalog_bucket.arn}/*"
     ]
+  }
+}
+
+data "aws_iam_policy_document" "cache_access" {
+  statement {
+    effect = "Allow"
+    actions = [
+      "elasticache:DescribeCacheClusters",
+      "elasticache:ListTagsForResource",
+      "ec2:CreateNetworkInterface",
+      "ec2:DescribeNetworkInterfaces",
+      "ec2:DeleteNetworkInterface",
+      "ec2:DescribeSubnets",
+      "ec2:DescribeSecurityGroups",
+      "ec2:DescribeVpcs"
+    ]
+    resources = ["*"]
   }
 }

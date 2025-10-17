@@ -1,0 +1,2931 @@
+{
+  "version": 4,
+  "terraform_version": "1.12.0",
+  "serial": 1507,
+  "lineage": "5301b62e-c5a4-79aa-d076-594b9dc28a90",
+  "outputs": {},
+  "resources": [
+    {
+      "mode": "data",
+      "type": "aws_iam_policy_document",
+      "name": "assume_role",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "2690255455",
+            "json": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"sts:AssumeRole\",\n      \"Principal\": {\n        \"Service\": \"lambda.amazonaws.com\"\n      }\n    }\n  ]\n}",
+            "minified_json": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":\"sts:AssumeRole\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"}}]}",
+            "override_json": null,
+            "override_policy_documents": null,
+            "policy_id": null,
+            "source_json": null,
+            "source_policy_documents": null,
+            "statement": [
+              {
+                "actions": [
+                  "sts:AssumeRole"
+                ],
+                "condition": [],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [
+                  {
+                    "identifiers": [
+                      "lambda.amazonaws.com"
+                    ],
+                    "type": "Service"
+                  }
+                ],
+                "resources": [],
+                "sid": ""
+              }
+            ],
+            "version": "2012-10-17"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "mode": "data",
+      "type": "aws_iam_policy_document",
+      "name": "lambda_policy_full",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "1742385769",
+            "json": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"dynamodb:UpdateItem\",\n        \"dynamodb:Scan\",\n        \"dynamodb:Query\",\n        \"dynamodb:PutItem\",\n        \"dynamodb:GetItem\"\n      ],\n      \"Resource\": [\n        \"arn:aws:dynamodb:us-west-1:572008280464:table/transaction-table/index/cardId-index\",\n        \"arn:aws:dynamodb:us-west-1:572008280464:table/transaction-table\",\n        \"arn:aws:dynamodb:us-west-1:572008280464:table/card-table/index/user_id-index\",\n        \"arn:aws:dynamodb:us-west-1:572008280464:table/card-table-error\",\n        \"arn:aws:dynamodb:us-west-1:572008280464:table/card-table\"\n      ]\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"sqs:SendMessage\",\n        \"sqs:ReceiveMessage\",\n        \"sqs:GetQueueUrl\",\n        \"sqs:GetQueueAttributes\",\n        \"sqs:DeleteMessage\"\n      ],\n      \"Resource\": [\n        \"arn:aws:sqs:us-west-1:572008280464:error-create-request-card-sqs\",\n        \"arn:aws:sqs:us-west-1:572008280464:create-request-card-sqs\"\n      ]\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"s3:PutObject\",\n        \"s3:GetObject\",\n        \"s3:DeleteObject\"\n      ],\n      \"Resource\": \"arn:aws:s3:::mi-reporte-transacciones-bucket-2025/*\"\n    }\n  ]\n}",
+            "minified_json": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":[\"dynamodb:UpdateItem\",\"dynamodb:Scan\",\"dynamodb:Query\",\"dynamodb:PutItem\",\"dynamodb:GetItem\"],\"Resource\":[\"arn:aws:dynamodb:us-west-1:572008280464:table/transaction-table/index/cardId-index\",\"arn:aws:dynamodb:us-west-1:572008280464:table/transaction-table\",\"arn:aws:dynamodb:us-west-1:572008280464:table/card-table/index/user_id-index\",\"arn:aws:dynamodb:us-west-1:572008280464:table/card-table-error\",\"arn:aws:dynamodb:us-west-1:572008280464:table/card-table\"]},{\"Effect\":\"Allow\",\"Action\":[\"sqs:SendMessage\",\"sqs:ReceiveMessage\",\"sqs:GetQueueUrl\",\"sqs:GetQueueAttributes\",\"sqs:DeleteMessage\"],\"Resource\":[\"arn:aws:sqs:us-west-1:572008280464:error-create-request-card-sqs\",\"arn:aws:sqs:us-west-1:572008280464:create-request-card-sqs\"]},{\"Effect\":\"Allow\",\"Action\":[\"s3:PutObject\",\"s3:GetObject\",\"s3:DeleteObject\"],\"Resource\":\"arn:aws:s3:::mi-reporte-transacciones-bucket-2025/*\"}]}",
+            "override_json": null,
+            "override_policy_documents": null,
+            "policy_id": null,
+            "source_json": null,
+            "source_policy_documents": null,
+            "statement": [
+              {
+                "actions": [
+                  "dynamodb:GetItem",
+                  "dynamodb:PutItem",
+                  "dynamodb:Query",
+                  "dynamodb:Scan",
+                  "dynamodb:UpdateItem"
+                ],
+                "condition": [],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [],
+                "resources": [
+                  "arn:aws:dynamodb:us-west-1:572008280464:table/card-table",
+                  "arn:aws:dynamodb:us-west-1:572008280464:table/card-table-error",
+                  "arn:aws:dynamodb:us-west-1:572008280464:table/card-table/index/user_id-index",
+                  "arn:aws:dynamodb:us-west-1:572008280464:table/transaction-table",
+                  "arn:aws:dynamodb:us-west-1:572008280464:table/transaction-table/index/cardId-index"
+                ],
+                "sid": ""
+              },
+              {
+                "actions": [
+                  "sqs:DeleteMessage",
+                  "sqs:GetQueueAttributes",
+                  "sqs:GetQueueUrl",
+                  "sqs:ReceiveMessage",
+                  "sqs:SendMessage"
+                ],
+                "condition": [],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [],
+                "resources": [
+                  "arn:aws:sqs:us-west-1:572008280464:create-request-card-sqs",
+                  "arn:aws:sqs:us-west-1:572008280464:error-create-request-card-sqs"
+                ],
+                "sid": ""
+              },
+              {
+                "actions": [
+                  "s3:DeleteObject",
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "condition": [],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [],
+                "resources": [
+                  "arn:aws:s3:::mi-reporte-transacciones-bucket-2025/*"
+                ],
+                "sid": ""
+              }
+            ],
+            "version": "2012-10-17"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "mode": "data",
+      "type": "aws_iam_policy_document",
+      "name": "s3_policy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "690234068",
+            "json": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"s3:PutObject\",\n        \"s3:GetObject\",\n        \"s3:DeleteObject\"\n      ],\n      \"Resource\": \"arn:aws:s3:::mi-reporte-transacciones-bucket-2025/*\"\n    }\n  ]\n}",
+            "minified_json": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":[\"s3:PutObject\",\"s3:GetObject\",\"s3:DeleteObject\"],\"Resource\":\"arn:aws:s3:::mi-reporte-transacciones-bucket-2025/*\"}]}",
+            "override_json": null,
+            "override_policy_documents": null,
+            "policy_id": null,
+            "source_json": null,
+            "source_policy_documents": null,
+            "statement": [
+              {
+                "actions": [
+                  "s3:DeleteObject",
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "condition": [],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [],
+                "resources": [
+                  "arn:aws:s3:::mi-reporte-transacciones-bucket-2025/*"
+                ],
+                "sid": ""
+              }
+            ],
+            "version": "2012-10-17"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_deployment",
+      "name": "card_api_deployment",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "created_date": "2025-09-08T19:17:48Z",
+            "description": "Development at 2025-09-09T13:04:43Z",
+            "id": "ghorvl",
+            "region": "us-west-1",
+            "rest_api_id": "zp0g7qvwg3",
+            "triggers": null,
+            "variables": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_integration.card_activate_post_lambda",
+            "aws_api_gateway_integration.card_create_post_lambda",
+            "aws_api_gateway_integration.card_get_report_get_lambda",
+            "aws_api_gateway_integration.card_paid_credit_card_post_lambda",
+            "aws_api_gateway_integration.card_purchase_post_lambda",
+            "aws_api_gateway_integration.card_transaction_post_lambda",
+            "aws_api_gateway_method.card_activate_post",
+            "aws_api_gateway_method.card_create_post",
+            "aws_api_gateway_method.card_get_report_get",
+            "aws_api_gateway_method.card_paid_credit_card_post",
+            "aws_api_gateway_method.card_purchase_post",
+            "aws_api_gateway_method.card_transaction_post",
+            "aws_api_gateway_resource.card",
+            "aws_api_gateway_resource.card_activate",
+            "aws_api_gateway_resource.card_create",
+            "aws_api_gateway_resource.card_get_report",
+            "aws_api_gateway_resource.card_get_report_id",
+            "aws_api_gateway_resource.card_paid_credit_card",
+            "aws_api_gateway_resource.card_purchase",
+            "aws_api_gateway_resource.card_transaction",
+            "aws_api_gateway_resource.card_transaction_id",
+            "aws_api_gateway_rest_api.card_api",
+            "aws_dynamodb_table.card_table",
+            "aws_dynamodb_table.card_table_error",
+            "aws_dynamodb_table.transaction_table",
+            "aws_iam_role.lambda_exec",
+            "aws_lambda_function.card_activate_lambda",
+            "aws_lambda_function.card_get_report_lambda",
+            "aws_lambda_function.card_paid_credit_card_lambda",
+            "aws_lambda_function.card_purchase_lambda",
+            "aws_lambda_function.card_transaction_lambda",
+            "aws_lambda_function.create_request_card_lambda",
+            "aws_s3_bucket.transactions_report",
+            "aws_sqs_queue.create_request_card",
+            "data.aws_iam_policy_document.assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_integration",
+      "name": "card_activate_post_lambda",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "cache_key_parameters": [],
+            "cache_namespace": "6mkrj4",
+            "connection_id": "",
+            "connection_type": "INTERNET",
+            "content_handling": "",
+            "credentials": "",
+            "http_method": "POST",
+            "id": "agi-zp0g7qvwg3-6mkrj4-POST",
+            "integration_http_method": "POST",
+            "passthrough_behavior": "WHEN_NO_MATCH",
+            "region": "us-west-1",
+            "request_parameters": {},
+            "request_templates": {},
+            "resource_id": "6mkrj4",
+            "rest_api_id": "zp0g7qvwg3",
+            "timeout_milliseconds": 29000,
+            "tls_config": [],
+            "type": "AWS_PROXY",
+            "uri": "arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:572008280464:function:card-activate-lambda/invocations"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_method.card_activate_post",
+            "aws_api_gateway_resource.card",
+            "aws_api_gateway_resource.card_activate",
+            "aws_api_gateway_rest_api.card_api",
+            "aws_dynamodb_table.card_table",
+            "aws_dynamodb_table.card_table_error",
+            "aws_dynamodb_table.transaction_table",
+            "aws_iam_role.lambda_exec",
+            "aws_lambda_function.card_activate_lambda",
+            "aws_s3_bucket.transactions_report",
+            "aws_sqs_queue.create_request_card",
+            "data.aws_iam_policy_document.assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_integration",
+      "name": "card_create_post_lambda",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "cache_key_parameters": [],
+            "cache_namespace": "8i3mj9",
+            "connection_id": "",
+            "connection_type": "INTERNET",
+            "content_handling": "",
+            "credentials": "",
+            "http_method": "POST",
+            "id": "agi-zp0g7qvwg3-8i3mj9-POST",
+            "integration_http_method": "POST",
+            "passthrough_behavior": "WHEN_NO_MATCH",
+            "region": "us-west-1",
+            "request_parameters": {},
+            "request_templates": {},
+            "resource_id": "8i3mj9",
+            "rest_api_id": "zp0g7qvwg3",
+            "timeout_milliseconds": 29000,
+            "tls_config": [],
+            "type": "AWS_PROXY",
+            "uri": "arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:572008280464:function:create-request-card-lambda/invocations"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_method.card_create_post",
+            "aws_api_gateway_resource.card",
+            "aws_api_gateway_resource.card_create",
+            "aws_api_gateway_rest_api.card_api",
+            "aws_dynamodb_table.card_table",
+            "aws_dynamodb_table.card_table_error",
+            "aws_dynamodb_table.transaction_table",
+            "aws_iam_role.lambda_exec",
+            "aws_lambda_function.create_request_card_lambda",
+            "aws_s3_bucket.transactions_report",
+            "aws_sqs_queue.create_request_card",
+            "data.aws_iam_policy_document.assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_integration",
+      "name": "card_get_report_get_lambda",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "cache_key_parameters": [],
+            "cache_namespace": "hroo1f",
+            "connection_id": "",
+            "connection_type": "INTERNET",
+            "content_handling": "",
+            "credentials": "",
+            "http_method": "GET",
+            "id": "agi-zp0g7qvwg3-hroo1f-GET",
+            "integration_http_method": "POST",
+            "passthrough_behavior": "WHEN_NO_MATCH",
+            "region": "us-west-1",
+            "request_parameters": {},
+            "request_templates": {},
+            "resource_id": "hroo1f",
+            "rest_api_id": "zp0g7qvwg3",
+            "timeout_milliseconds": 29000,
+            "tls_config": [],
+            "type": "AWS_PROXY",
+            "uri": "arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:572008280464:function:card-get-report-lambda/invocations"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_method.card_get_report_get",
+            "aws_api_gateway_resource.card",
+            "aws_api_gateway_resource.card_get_report",
+            "aws_api_gateway_resource.card_get_report_id",
+            "aws_api_gateway_rest_api.card_api",
+            "aws_dynamodb_table.card_table",
+            "aws_dynamodb_table.card_table_error",
+            "aws_dynamodb_table.transaction_table",
+            "aws_iam_role.lambda_exec",
+            "aws_lambda_function.card_get_report_lambda",
+            "aws_s3_bucket.transactions_report",
+            "aws_sqs_queue.create_request_card",
+            "data.aws_iam_policy_document.assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_integration",
+      "name": "card_paid_credit_card_post_lambda",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "cache_key_parameters": [],
+            "cache_namespace": "x3v7ui",
+            "connection_id": "",
+            "connection_type": "INTERNET",
+            "content_handling": "",
+            "credentials": "",
+            "http_method": "POST",
+            "id": "agi-zp0g7qvwg3-x3v7ui-POST",
+            "integration_http_method": "POST",
+            "passthrough_behavior": "WHEN_NO_MATCH",
+            "region": "us-west-1",
+            "request_parameters": {},
+            "request_templates": {},
+            "resource_id": "x3v7ui",
+            "rest_api_id": "zp0g7qvwg3",
+            "timeout_milliseconds": 29000,
+            "tls_config": [],
+            "type": "AWS_PROXY",
+            "uri": "arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:572008280464:function:card-paid-credit-card-lambda/invocations"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_method.card_paid_credit_card_post",
+            "aws_api_gateway_resource.card",
+            "aws_api_gateway_resource.card_paid_credit_card",
+            "aws_api_gateway_rest_api.card_api",
+            "aws_dynamodb_table.card_table",
+            "aws_dynamodb_table.card_table_error",
+            "aws_dynamodb_table.transaction_table",
+            "aws_iam_role.lambda_exec",
+            "aws_lambda_function.card_paid_credit_card_lambda",
+            "aws_s3_bucket.transactions_report",
+            "aws_sqs_queue.create_request_card",
+            "data.aws_iam_policy_document.assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_integration",
+      "name": "card_purchase_post_lambda",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "cache_key_parameters": [],
+            "cache_namespace": "dqrf4n",
+            "connection_id": "",
+            "connection_type": "INTERNET",
+            "content_handling": "",
+            "credentials": "",
+            "http_method": "POST",
+            "id": "agi-zp0g7qvwg3-dqrf4n-POST",
+            "integration_http_method": "POST",
+            "passthrough_behavior": "WHEN_NO_MATCH",
+            "region": "us-west-1",
+            "request_parameters": {},
+            "request_templates": {},
+            "resource_id": "dqrf4n",
+            "rest_api_id": "zp0g7qvwg3",
+            "timeout_milliseconds": 29000,
+            "tls_config": [],
+            "type": "AWS_PROXY",
+            "uri": "arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:572008280464:function:card-purchase-lambda/invocations"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_method.card_purchase_post",
+            "aws_api_gateway_resource.card",
+            "aws_api_gateway_resource.card_purchase",
+            "aws_api_gateway_rest_api.card_api",
+            "aws_dynamodb_table.card_table",
+            "aws_dynamodb_table.card_table_error",
+            "aws_dynamodb_table.transaction_table",
+            "aws_iam_role.lambda_exec",
+            "aws_lambda_function.card_purchase_lambda",
+            "aws_s3_bucket.transactions_report",
+            "aws_sqs_queue.create_request_card",
+            "data.aws_iam_policy_document.assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_integration",
+      "name": "card_transaction_post_lambda",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "cache_key_parameters": [],
+            "cache_namespace": "nm5c04",
+            "connection_id": "",
+            "connection_type": "INTERNET",
+            "content_handling": "",
+            "credentials": "",
+            "http_method": "POST",
+            "id": "agi-zp0g7qvwg3-nm5c04-POST",
+            "integration_http_method": "POST",
+            "passthrough_behavior": "WHEN_NO_MATCH",
+            "region": "us-west-1",
+            "request_parameters": {},
+            "request_templates": {},
+            "resource_id": "nm5c04",
+            "rest_api_id": "zp0g7qvwg3",
+            "timeout_milliseconds": 29000,
+            "tls_config": [],
+            "type": "AWS_PROXY",
+            "uri": "arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:572008280464:function:card-transaction-lambda/invocations"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_method.card_transaction_post",
+            "aws_api_gateway_resource.card",
+            "aws_api_gateway_resource.card_transaction",
+            "aws_api_gateway_resource.card_transaction_id",
+            "aws_api_gateway_rest_api.card_api",
+            "aws_dynamodb_table.card_table",
+            "aws_dynamodb_table.card_table_error",
+            "aws_dynamodb_table.transaction_table",
+            "aws_iam_role.lambda_exec",
+            "aws_lambda_function.card_transaction_lambda",
+            "aws_s3_bucket.transactions_report",
+            "aws_sqs_queue.create_request_card",
+            "data.aws_iam_policy_document.assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_method",
+      "name": "card_activate_post",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "api_key_required": false,
+            "authorization": "NONE",
+            "authorization_scopes": [],
+            "authorizer_id": "",
+            "http_method": "POST",
+            "id": "agm-zp0g7qvwg3-6mkrj4-POST",
+            "operation_name": "",
+            "region": "us-west-1",
+            "request_models": {},
+            "request_parameters": {},
+            "request_validator_id": "",
+            "resource_id": "6mkrj4",
+            "rest_api_id": "zp0g7qvwg3"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_resource.card",
+            "aws_api_gateway_resource.card_activate",
+            "aws_api_gateway_rest_api.card_api"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_method",
+      "name": "card_create_post",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "api_key_required": false,
+            "authorization": "NONE",
+            "authorization_scopes": [],
+            "authorizer_id": "",
+            "http_method": "POST",
+            "id": "agm-zp0g7qvwg3-8i3mj9-POST",
+            "operation_name": "",
+            "region": "us-west-1",
+            "request_models": {},
+            "request_parameters": {},
+            "request_validator_id": "",
+            "resource_id": "8i3mj9",
+            "rest_api_id": "zp0g7qvwg3"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_resource.card",
+            "aws_api_gateway_resource.card_create",
+            "aws_api_gateway_rest_api.card_api"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_method",
+      "name": "card_get_report_get",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "api_key_required": false,
+            "authorization": "NONE",
+            "authorization_scopes": [],
+            "authorizer_id": "",
+            "http_method": "GET",
+            "id": "agm-zp0g7qvwg3-hroo1f-GET",
+            "operation_name": "",
+            "region": "us-west-1",
+            "request_models": {},
+            "request_parameters": {},
+            "request_validator_id": "",
+            "resource_id": "hroo1f",
+            "rest_api_id": "zp0g7qvwg3"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_resource.card",
+            "aws_api_gateway_resource.card_get_report",
+            "aws_api_gateway_resource.card_get_report_id",
+            "aws_api_gateway_rest_api.card_api"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_method",
+      "name": "card_paid_credit_card_post",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "api_key_required": false,
+            "authorization": "NONE",
+            "authorization_scopes": [],
+            "authorizer_id": "",
+            "http_method": "POST",
+            "id": "agm-zp0g7qvwg3-x3v7ui-POST",
+            "operation_name": "",
+            "region": "us-west-1",
+            "request_models": {},
+            "request_parameters": {},
+            "request_validator_id": "",
+            "resource_id": "x3v7ui",
+            "rest_api_id": "zp0g7qvwg3"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_resource.card",
+            "aws_api_gateway_resource.card_paid_credit_card",
+            "aws_api_gateway_rest_api.card_api"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_method",
+      "name": "card_purchase_post",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "api_key_required": false,
+            "authorization": "NONE",
+            "authorization_scopes": [],
+            "authorizer_id": "",
+            "http_method": "POST",
+            "id": "agm-zp0g7qvwg3-dqrf4n-POST",
+            "operation_name": "",
+            "region": "us-west-1",
+            "request_models": {},
+            "request_parameters": {},
+            "request_validator_id": "",
+            "resource_id": "dqrf4n",
+            "rest_api_id": "zp0g7qvwg3"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_resource.card",
+            "aws_api_gateway_resource.card_purchase",
+            "aws_api_gateway_rest_api.card_api"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_method",
+      "name": "card_transaction_post",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "api_key_required": false,
+            "authorization": "NONE",
+            "authorization_scopes": [],
+            "authorizer_id": "",
+            "http_method": "POST",
+            "id": "agm-zp0g7qvwg3-nm5c04-POST",
+            "operation_name": "",
+            "region": "us-west-1",
+            "request_models": {},
+            "request_parameters": {},
+            "request_validator_id": "",
+            "resource_id": "nm5c04",
+            "rest_api_id": "zp0g7qvwg3"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_resource.card",
+            "aws_api_gateway_resource.card_transaction",
+            "aws_api_gateway_resource.card_transaction_id",
+            "aws_api_gateway_rest_api.card_api"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_resource",
+      "name": "card",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "w2dxdl",
+            "parent_id": "ep9wo84xve",
+            "path": "/card",
+            "path_part": "card",
+            "region": "us-west-1",
+            "rest_api_id": "zp0g7qvwg3"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_rest_api.card_api"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_resource",
+      "name": "card_activate",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "6mkrj4",
+            "parent_id": "w2dxdl",
+            "path": "/card/activate",
+            "path_part": "activate",
+            "region": "us-west-1",
+            "rest_api_id": "zp0g7qvwg3"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_resource.card",
+            "aws_api_gateway_rest_api.card_api"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_resource",
+      "name": "card_create",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "8i3mj9",
+            "parent_id": "w2dxdl",
+            "path": "/card/create",
+            "path_part": "create",
+            "region": "us-west-1",
+            "rest_api_id": "zp0g7qvwg3"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_resource.card",
+            "aws_api_gateway_rest_api.card_api"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_resource",
+      "name": "card_get_report",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "ijzsz0",
+            "parent_id": "w2dxdl",
+            "path": "/card/get-report",
+            "path_part": "get-report",
+            "region": "us-west-1",
+            "rest_api_id": "zp0g7qvwg3"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_resource.card",
+            "aws_api_gateway_rest_api.card_api"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_resource",
+      "name": "card_get_report_id",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "hroo1f",
+            "parent_id": "ijzsz0",
+            "path": "/card/get-report/{cardId}",
+            "path_part": "{cardId}",
+            "region": "us-west-1",
+            "rest_api_id": "zp0g7qvwg3"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_resource.card",
+            "aws_api_gateway_resource.card_get_report",
+            "aws_api_gateway_rest_api.card_api"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_resource",
+      "name": "card_paid_credit_card",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "x3v7ui",
+            "parent_id": "w2dxdl",
+            "path": "/card/paid-credit-card",
+            "path_part": "paid-credit-card",
+            "region": "us-west-1",
+            "rest_api_id": "zp0g7qvwg3"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_resource.card",
+            "aws_api_gateway_rest_api.card_api"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_resource",
+      "name": "card_purchase",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "dqrf4n",
+            "parent_id": "w2dxdl",
+            "path": "/card/purchase",
+            "path_part": "purchase",
+            "region": "us-west-1",
+            "rest_api_id": "zp0g7qvwg3"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_resource.card",
+            "aws_api_gateway_rest_api.card_api"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_resource",
+      "name": "card_transaction",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "rox9x9",
+            "parent_id": "w2dxdl",
+            "path": "/card/transaction",
+            "path_part": "transaction",
+            "region": "us-west-1",
+            "rest_api_id": "zp0g7qvwg3"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_resource.card",
+            "aws_api_gateway_rest_api.card_api"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_resource",
+      "name": "card_transaction_id",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "nm5c04",
+            "parent_id": "rox9x9",
+            "path": "/card/transaction/{cardId}",
+            "path_part": "{cardId}",
+            "region": "us-west-1",
+            "rest_api_id": "zp0g7qvwg3"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_resource.card",
+            "aws_api_gateway_resource.card_transaction",
+            "aws_api_gateway_rest_api.card_api"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_rest_api",
+      "name": "card_api",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "api_key_source": "HEADER",
+            "arn": "arn:aws:apigateway:us-west-1::/restapis/zp0g7qvwg3",
+            "binary_media_types": [],
+            "body": null,
+            "created_date": "2025-09-08T19:15:40Z",
+            "description": "",
+            "disable_execute_api_endpoint": false,
+            "endpoint_configuration": [
+              {
+                "ip_address_type": "ipv4",
+                "types": [
+                  "EDGE"
+                ],
+                "vpc_endpoint_ids": []
+              }
+            ],
+            "execution_arn": "arn:aws:execute-api:us-west-1:572008280464:zp0g7qvwg3",
+            "fail_on_warnings": null,
+            "id": "zp0g7qvwg3",
+            "minimum_compression_size": "",
+            "name": "CardServiceAPI",
+            "parameters": null,
+            "policy": "",
+            "put_rest_api_mode": null,
+            "region": "us-west-1",
+            "root_resource_id": "ep9wo84xve",
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_stage",
+      "name": "card_api_stage",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "access_log_settings": [],
+            "arn": "arn:aws:apigateway:us-west-1::/restapis/zp0g7qvwg3/stages/dev",
+            "cache_cluster_enabled": false,
+            "cache_cluster_size": "",
+            "canary_settings": [],
+            "client_certificate_id": "",
+            "deployment_id": "ghorvl",
+            "description": "",
+            "documentation_version": "",
+            "execution_arn": "arn:aws:execute-api:us-west-1:572008280464:zp0g7qvwg3/dev",
+            "id": "ags-zp0g7qvwg3-dev",
+            "invoke_url": "https://zp0g7qvwg3.execute-api.us-west-1.amazonaws.com/dev",
+            "region": "us-west-1",
+            "rest_api_id": "zp0g7qvwg3",
+            "stage_name": "dev",
+            "tags": {},
+            "tags_all": {},
+            "variables": {},
+            "web_acl_arn": "",
+            "xray_tracing_enabled": false
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_deployment.card_api_deployment",
+            "aws_api_gateway_integration.card_activate_post_lambda",
+            "aws_api_gateway_integration.card_create_post_lambda",
+            "aws_api_gateway_integration.card_get_report_get_lambda",
+            "aws_api_gateway_integration.card_paid_credit_card_post_lambda",
+            "aws_api_gateway_integration.card_purchase_post_lambda",
+            "aws_api_gateway_integration.card_transaction_post_lambda",
+            "aws_api_gateway_method.card_activate_post",
+            "aws_api_gateway_method.card_create_post",
+            "aws_api_gateway_method.card_get_report_get",
+            "aws_api_gateway_method.card_paid_credit_card_post",
+            "aws_api_gateway_method.card_purchase_post",
+            "aws_api_gateway_method.card_transaction_post",
+            "aws_api_gateway_resource.card",
+            "aws_api_gateway_resource.card_activate",
+            "aws_api_gateway_resource.card_create",
+            "aws_api_gateway_resource.card_get_report",
+            "aws_api_gateway_resource.card_get_report_id",
+            "aws_api_gateway_resource.card_paid_credit_card",
+            "aws_api_gateway_resource.card_purchase",
+            "aws_api_gateway_resource.card_transaction",
+            "aws_api_gateway_resource.card_transaction_id",
+            "aws_api_gateway_rest_api.card_api",
+            "aws_dynamodb_table.card_table",
+            "aws_dynamodb_table.card_table_error",
+            "aws_dynamodb_table.transaction_table",
+            "aws_iam_role.lambda_exec",
+            "aws_lambda_function.card_activate_lambda",
+            "aws_lambda_function.card_get_report_lambda",
+            "aws_lambda_function.card_paid_credit_card_lambda",
+            "aws_lambda_function.card_purchase_lambda",
+            "aws_lambda_function.card_transaction_lambda",
+            "aws_lambda_function.create_request_card_lambda",
+            "aws_s3_bucket.transactions_report",
+            "aws_sqs_queue.create_request_card",
+            "data.aws_iam_policy_document.assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_dynamodb_table",
+      "name": "card_table",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:dynamodb:us-west-1:572008280464:table/card-table",
+            "attribute": [
+              {
+                "name": "createdAt",
+                "type": "S"
+              },
+              {
+                "name": "user_id",
+                "type": "S"
+              },
+              {
+                "name": "uuid",
+                "type": "S"
+              }
+            ],
+            "billing_mode": "PAY_PER_REQUEST",
+            "deletion_protection_enabled": false,
+            "global_secondary_index": [
+              {
+                "hash_key": "user_id",
+                "name": "user_id-index",
+                "non_key_attributes": [],
+                "on_demand_throughput": [],
+                "projection_type": "ALL",
+                "range_key": "",
+                "read_capacity": 0,
+                "write_capacity": 0
+              }
+            ],
+            "hash_key": "uuid",
+            "id": "card-table",
+            "import_table": [],
+            "local_secondary_index": [],
+            "name": "card-table",
+            "on_demand_throughput": [],
+            "point_in_time_recovery": [
+              {
+                "enabled": false,
+                "recovery_period_in_days": 0
+              }
+            ],
+            "range_key": "createdAt",
+            "read_capacity": 0,
+            "region": "us-west-1",
+            "replica": [],
+            "restore_date_time": null,
+            "restore_source_name": null,
+            "restore_source_table_arn": null,
+            "restore_to_latest_time": null,
+            "server_side_encryption": [],
+            "stream_arn": "",
+            "stream_enabled": false,
+            "stream_label": "",
+            "stream_view_type": "",
+            "table_class": "STANDARD",
+            "tags": {},
+            "tags_all": {},
+            "timeouts": null,
+            "ttl": [
+              {
+                "attribute_name": "",
+                "enabled": false
+              }
+            ],
+            "write_capacity": 0
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxODAwMDAwMDAwMDAwLCJkZWxldGUiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjozNjAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIxIn0="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_dynamodb_table",
+      "name": "card_table_error",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:dynamodb:us-west-1:572008280464:table/card-table-error",
+            "attribute": [
+              {
+                "name": "createdAt",
+                "type": "S"
+              },
+              {
+                "name": "uuid",
+                "type": "S"
+              }
+            ],
+            "billing_mode": "PAY_PER_REQUEST",
+            "deletion_protection_enabled": false,
+            "global_secondary_index": [],
+            "hash_key": "uuid",
+            "id": "card-table-error",
+            "import_table": [],
+            "local_secondary_index": [],
+            "name": "card-table-error",
+            "on_demand_throughput": [],
+            "point_in_time_recovery": [
+              {
+                "enabled": false,
+                "recovery_period_in_days": 0
+              }
+            ],
+            "range_key": "createdAt",
+            "read_capacity": 0,
+            "region": "us-west-1",
+            "replica": [],
+            "restore_date_time": null,
+            "restore_source_name": null,
+            "restore_source_table_arn": null,
+            "restore_to_latest_time": null,
+            "server_side_encryption": [],
+            "stream_arn": "",
+            "stream_enabled": false,
+            "stream_label": "",
+            "stream_view_type": "",
+            "table_class": "STANDARD",
+            "tags": {},
+            "tags_all": {},
+            "timeouts": null,
+            "ttl": [
+              {
+                "attribute_name": "",
+                "enabled": false
+              }
+            ],
+            "write_capacity": 0
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxODAwMDAwMDAwMDAwLCJkZWxldGUiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjozNjAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIxIn0="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_dynamodb_table",
+      "name": "transaction_table",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:dynamodb:us-west-1:572008280464:table/transaction-table",
+            "attribute": [
+              {
+                "name": "cardId",
+                "type": "S"
+              },
+              {
+                "name": "createdAt",
+                "type": "S"
+              },
+              {
+                "name": "uuid",
+                "type": "S"
+              }
+            ],
+            "billing_mode": "PAY_PER_REQUEST",
+            "deletion_protection_enabled": false,
+            "global_secondary_index": [
+              {
+                "hash_key": "cardId",
+                "name": "cardId-index",
+                "non_key_attributes": [],
+                "on_demand_throughput": [],
+                "projection_type": "ALL",
+                "range_key": "",
+                "read_capacity": 0,
+                "write_capacity": 0
+              }
+            ],
+            "hash_key": "uuid",
+            "id": "transaction-table",
+            "import_table": [],
+            "local_secondary_index": [],
+            "name": "transaction-table",
+            "on_demand_throughput": [],
+            "point_in_time_recovery": [
+              {
+                "enabled": false,
+                "recovery_period_in_days": 0
+              }
+            ],
+            "range_key": "createdAt",
+            "read_capacity": 0,
+            "region": "us-west-1",
+            "replica": [],
+            "restore_date_time": null,
+            "restore_source_name": null,
+            "restore_source_table_arn": null,
+            "restore_to_latest_time": null,
+            "server_side_encryption": [],
+            "stream_arn": "",
+            "stream_enabled": false,
+            "stream_label": "",
+            "stream_view_type": "",
+            "table_class": "STANDARD",
+            "tags": {},
+            "tags_all": {},
+            "timeouts": null,
+            "ttl": [
+              {
+                "attribute_name": "",
+                "enabled": false
+              }
+            ],
+            "write_capacity": 0
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxODAwMDAwMDAwMDAwLCJkZWxldGUiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjozNjAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIxIn0="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_policy",
+      "name": "lambda_policy_full",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::572008280464:policy/LambdaFullAccessCardService",
+            "attachment_count": 1,
+            "description": "",
+            "id": "arn:aws:iam::572008280464:policy/LambdaFullAccessCardService",
+            "name": "LambdaFullAccessCardService",
+            "name_prefix": "",
+            "path": "/",
+            "policy": "{\"Statement\":[{\"Action\":[\"dynamodb:UpdateItem\",\"dynamodb:Scan\",\"dynamodb:Query\",\"dynamodb:PutItem\",\"dynamodb:GetItem\"],\"Effect\":\"Allow\",\"Resource\":[\"arn:aws:dynamodb:us-west-1:572008280464:table/transaction-table/index/cardId-index\",\"arn:aws:dynamodb:us-west-1:572008280464:table/transaction-table\",\"arn:aws:dynamodb:us-west-1:572008280464:table/card-table/index/user_id-index\",\"arn:aws:dynamodb:us-west-1:572008280464:table/card-table-error\",\"arn:aws:dynamodb:us-west-1:572008280464:table/card-table\"]},{\"Action\":[\"sqs:SendMessage\",\"sqs:ReceiveMessage\",\"sqs:GetQueueUrl\",\"sqs:GetQueueAttributes\",\"sqs:DeleteMessage\"],\"Effect\":\"Allow\",\"Resource\":[\"arn:aws:sqs:us-west-1:572008280464:error-create-request-card-sqs\",\"arn:aws:sqs:us-west-1:572008280464:create-request-card-sqs\"]},{\"Action\":[\"s3:PutObject\",\"s3:GetObject\",\"s3:DeleteObject\"],\"Effect\":\"Allow\",\"Resource\":\"arn:aws:s3:::mi-reporte-transacciones-bucket-2025/*\"}],\"Version\":\"2012-10-17\"}",
+            "policy_id": "ANPAYKLSZWGIHLQBFD3HR",
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "arn": "arn:aws:iam::572008280464:policy/LambdaFullAccessCardService"
+          },
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_dynamodb_table.card_table",
+            "aws_dynamodb_table.card_table_error",
+            "aws_dynamodb_table.transaction_table",
+            "aws_s3_bucket.transactions_report",
+            "aws_sqs_queue.create_request_card",
+            "aws_sqs_queue.error_create_request_card",
+            "data.aws_iam_policy_document.lambda_policy_full"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role",
+      "name": "lambda_exec",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::572008280464:role/ExecutionLambda",
+            "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+            "create_date": "2025-09-08T19:15:40Z",
+            "description": "",
+            "force_detach_policies": false,
+            "id": "ExecutionLambda",
+            "inline_policy": [],
+            "managed_policy_arns": [
+              "arn:aws:iam::572008280464:policy/LambdaFullAccessCardService",
+              "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+            ],
+            "max_session_duration": 3600,
+            "name": "ExecutionLambda",
+            "name_prefix": "",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": {},
+            "tags_all": {},
+            "unique_id": "AROAYKLSZWGILVWKTYJS6"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "572008280464",
+            "name": "ExecutionLambda"
+          },
+          "private": "bnVsbA==",
+          "dependencies": [
+            "data.aws_iam_policy_document.assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role_policy_attachment",
+      "name": "lambda_basic_execution",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "ExecutionLambda/arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+            "policy_arn": "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+            "role": "ExecutionLambda"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "572008280464",
+            "policy_arn": "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+            "role": "ExecutionLambda"
+          },
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_iam_role.lambda_exec",
+            "data.aws_iam_policy_document.assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role_policy_attachment",
+      "name": "lambda_full_policy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "ExecutionLambda/arn:aws:iam::572008280464:policy/LambdaFullAccessCardService",
+            "policy_arn": "arn:aws:iam::572008280464:policy/LambdaFullAccessCardService",
+            "role": "ExecutionLambda"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "572008280464",
+            "policy_arn": "arn:aws:iam::572008280464:policy/LambdaFullAccessCardService",
+            "role": "ExecutionLambda"
+          },
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_dynamodb_table.card_table",
+            "aws_dynamodb_table.card_table_error",
+            "aws_dynamodb_table.transaction_table",
+            "aws_iam_policy.lambda_policy_full",
+            "aws_iam_role.lambda_exec",
+            "aws_s3_bucket.transactions_report",
+            "aws_sqs_queue.create_request_card",
+            "aws_sqs_queue.error_create_request_card",
+            "data.aws_iam_policy_document.assume_role",
+            "data.aws_iam_policy_document.lambda_policy_full"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_lambda_event_source_mapping",
+      "name": "card_activate_sqs",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "amazon_managed_kafka_event_source_config": [],
+            "arn": "arn:aws:lambda:us-west-1:572008280464:event-source-mapping:2450cab5-76a1-427a-84fd-1ed424c0208c",
+            "batch_size": 1,
+            "bisect_batch_on_function_error": false,
+            "destination_config": [],
+            "document_db_event_source_config": [],
+            "enabled": true,
+            "event_source_arn": "arn:aws:sqs:us-west-1:572008280464:create-request-card-sqs",
+            "filter_criteria": [],
+            "function_arn": "arn:aws:lambda:us-west-1:572008280464:function:card-activate-lambda",
+            "function_name": "arn:aws:lambda:us-west-1:572008280464:function:card-activate-lambda",
+            "function_response_types": [],
+            "id": "2450cab5-76a1-427a-84fd-1ed424c0208c",
+            "kms_key_arn": "",
+            "last_modified": "2025-09-08T19:17:47Z",
+            "last_processing_result": "",
+            "maximum_batching_window_in_seconds": 0,
+            "maximum_record_age_in_seconds": 0,
+            "maximum_retry_attempts": 0,
+            "metrics_config": [],
+            "parallelization_factor": 0,
+            "provisioned_poller_config": [],
+            "queues": [],
+            "region": "us-west-1",
+            "scaling_config": [],
+            "self_managed_event_source": [],
+            "self_managed_kafka_event_source_config": [],
+            "source_access_configuration": [],
+            "starting_position": "",
+            "starting_position_timestamp": "",
+            "state": "Enabled",
+            "state_transition_reason": "USER_INITIATED",
+            "tags": {},
+            "tags_all": {},
+            "topics": [],
+            "tumbling_window_in_seconds": 0,
+            "uuid": "2450cab5-76a1-427a-84fd-1ed424c0208c"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_dynamodb_table.card_table",
+            "aws_dynamodb_table.card_table_error",
+            "aws_dynamodb_table.transaction_table",
+            "aws_iam_role.lambda_exec",
+            "aws_lambda_function.card_activate_lambda",
+            "aws_s3_bucket.transactions_report",
+            "aws_sqs_queue.create_request_card",
+            "data.aws_iam_policy_document.assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_lambda_event_source_mapping",
+      "name": "card_get_report_sqs",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "amazon_managed_kafka_event_source_config": [],
+            "arn": "arn:aws:lambda:us-west-1:572008280464:event-source-mapping:03c8d96b-5d31-406f-a26b-614df11805ee",
+            "batch_size": 1,
+            "bisect_batch_on_function_error": false,
+            "destination_config": [],
+            "document_db_event_source_config": [],
+            "enabled": true,
+            "event_source_arn": "arn:aws:sqs:us-west-1:572008280464:create-request-card-sqs",
+            "filter_criteria": [],
+            "function_arn": "arn:aws:lambda:us-west-1:572008280464:function:card-get-report-lambda",
+            "function_name": "arn:aws:lambda:us-west-1:572008280464:function:card-get-report-lambda",
+            "function_response_types": [],
+            "id": "03c8d96b-5d31-406f-a26b-614df11805ee",
+            "kms_key_arn": "",
+            "last_modified": "2025-09-08T19:17:40Z",
+            "last_processing_result": "",
+            "maximum_batching_window_in_seconds": 0,
+            "maximum_record_age_in_seconds": 0,
+            "maximum_retry_attempts": 0,
+            "metrics_config": [],
+            "parallelization_factor": 0,
+            "provisioned_poller_config": [],
+            "queues": [],
+            "region": "us-west-1",
+            "scaling_config": [],
+            "self_managed_event_source": [],
+            "self_managed_kafka_event_source_config": [],
+            "source_access_configuration": [],
+            "starting_position": "",
+            "starting_position_timestamp": "",
+            "state": "Enabled",
+            "state_transition_reason": "USER_INITIATED",
+            "tags": {},
+            "tags_all": {},
+            "topics": [],
+            "tumbling_window_in_seconds": 0,
+            "uuid": "03c8d96b-5d31-406f-a26b-614df11805ee"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_dynamodb_table.card_table",
+            "aws_dynamodb_table.card_table_error",
+            "aws_dynamodb_table.transaction_table",
+            "aws_iam_role.lambda_exec",
+            "aws_lambda_function.card_get_report_lambda",
+            "aws_s3_bucket.transactions_report",
+            "aws_sqs_queue.create_request_card",
+            "data.aws_iam_policy_document.assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_lambda_event_source_mapping",
+      "name": "card_paid_credit_card_sqs",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "amazon_managed_kafka_event_source_config": [],
+            "arn": "arn:aws:lambda:us-west-1:572008280464:event-source-mapping:110673a9-70bc-4446-bc1c-fc3f439d6994",
+            "batch_size": 1,
+            "bisect_batch_on_function_error": false,
+            "destination_config": [],
+            "document_db_event_source_config": [],
+            "enabled": true,
+            "event_source_arn": "arn:aws:sqs:us-west-1:572008280464:create-request-card-sqs",
+            "filter_criteria": [],
+            "function_arn": "arn:aws:lambda:us-west-1:572008280464:function:card-paid-credit-card-lambda",
+            "function_name": "arn:aws:lambda:us-west-1:572008280464:function:card-paid-credit-card-lambda",
+            "function_response_types": [],
+            "id": "110673a9-70bc-4446-bc1c-fc3f439d6994",
+            "kms_key_arn": "",
+            "last_modified": "2025-09-08T19:17:17Z",
+            "last_processing_result": "",
+            "maximum_batching_window_in_seconds": 0,
+            "maximum_record_age_in_seconds": 0,
+            "maximum_retry_attempts": 0,
+            "metrics_config": [],
+            "parallelization_factor": 0,
+            "provisioned_poller_config": [],
+            "queues": [],
+            "region": "us-west-1",
+            "scaling_config": [],
+            "self_managed_event_source": [],
+            "self_managed_kafka_event_source_config": [],
+            "source_access_configuration": [],
+            "starting_position": "",
+            "starting_position_timestamp": "",
+            "state": "Enabled",
+            "state_transition_reason": "USER_INITIATED",
+            "tags": {},
+            "tags_all": {},
+            "topics": [],
+            "tumbling_window_in_seconds": 0,
+            "uuid": "110673a9-70bc-4446-bc1c-fc3f439d6994"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_dynamodb_table.card_table",
+            "aws_dynamodb_table.card_table_error",
+            "aws_dynamodb_table.transaction_table",
+            "aws_iam_role.lambda_exec",
+            "aws_lambda_function.card_paid_credit_card_lambda",
+            "aws_s3_bucket.transactions_report",
+            "aws_sqs_queue.create_request_card",
+            "data.aws_iam_policy_document.assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_lambda_event_source_mapping",
+      "name": "card_purchase_sqs",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "amazon_managed_kafka_event_source_config": [],
+            "arn": "arn:aws:lambda:us-west-1:572008280464:event-source-mapping:59e7b849-9f5d-489f-a2f2-6eda1ebf602b",
+            "batch_size": 1,
+            "bisect_batch_on_function_error": false,
+            "destination_config": [],
+            "document_db_event_source_config": [],
+            "enabled": true,
+            "event_source_arn": "arn:aws:sqs:us-west-1:572008280464:create-request-card-sqs",
+            "filter_criteria": [],
+            "function_arn": "arn:aws:lambda:us-west-1:572008280464:function:card-purchase-lambda",
+            "function_name": "arn:aws:lambda:us-west-1:572008280464:function:card-purchase-lambda",
+            "function_response_types": [],
+            "id": "59e7b849-9f5d-489f-a2f2-6eda1ebf602b",
+            "kms_key_arn": "",
+            "last_modified": "2025-09-08T19:17:32Z",
+            "last_processing_result": "",
+            "maximum_batching_window_in_seconds": 0,
+            "maximum_record_age_in_seconds": 0,
+            "maximum_retry_attempts": 0,
+            "metrics_config": [],
+            "parallelization_factor": 0,
+            "provisioned_poller_config": [],
+            "queues": [],
+            "region": "us-west-1",
+            "scaling_config": [],
+            "self_managed_event_source": [],
+            "self_managed_kafka_event_source_config": [],
+            "source_access_configuration": [],
+            "starting_position": "",
+            "starting_position_timestamp": "",
+            "state": "Enabled",
+            "state_transition_reason": "USER_INITIATED",
+            "tags": {},
+            "tags_all": {},
+            "topics": [],
+            "tumbling_window_in_seconds": 0,
+            "uuid": "59e7b849-9f5d-489f-a2f2-6eda1ebf602b"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_dynamodb_table.card_table",
+            "aws_dynamodb_table.card_table_error",
+            "aws_dynamodb_table.transaction_table",
+            "aws_iam_role.lambda_exec",
+            "aws_lambda_function.card_purchase_lambda",
+            "aws_s3_bucket.transactions_report",
+            "aws_sqs_queue.create_request_card",
+            "data.aws_iam_policy_document.assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_lambda_event_source_mapping",
+      "name": "card_transaction_sqs",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "amazon_managed_kafka_event_source_config": [],
+            "arn": "arn:aws:lambda:us-west-1:572008280464:event-source-mapping:311dad57-7ea5-4fa9-a69b-3aff650464ea",
+            "batch_size": 1,
+            "bisect_batch_on_function_error": false,
+            "destination_config": [],
+            "document_db_event_source_config": [],
+            "enabled": true,
+            "event_source_arn": "arn:aws:sqs:us-west-1:572008280464:create-request-card-sqs",
+            "filter_criteria": [],
+            "function_arn": "arn:aws:lambda:us-west-1:572008280464:function:card-transaction-lambda",
+            "function_name": "arn:aws:lambda:us-west-1:572008280464:function:card-transaction-lambda",
+            "function_response_types": [],
+            "id": "311dad57-7ea5-4fa9-a69b-3aff650464ea",
+            "kms_key_arn": "",
+            "last_modified": "2025-09-08T19:17:25Z",
+            "last_processing_result": "",
+            "maximum_batching_window_in_seconds": 0,
+            "maximum_record_age_in_seconds": 0,
+            "maximum_retry_attempts": 0,
+            "metrics_config": [],
+            "parallelization_factor": 0,
+            "provisioned_poller_config": [],
+            "queues": [],
+            "region": "us-west-1",
+            "scaling_config": [],
+            "self_managed_event_source": [],
+            "self_managed_kafka_event_source_config": [],
+            "source_access_configuration": [],
+            "starting_position": "",
+            "starting_position_timestamp": "",
+            "state": "Enabled",
+            "state_transition_reason": "USER_INITIATED",
+            "tags": {},
+            "tags_all": {},
+            "topics": [],
+            "tumbling_window_in_seconds": 0,
+            "uuid": "311dad57-7ea5-4fa9-a69b-3aff650464ea"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_dynamodb_table.card_table",
+            "aws_dynamodb_table.card_table_error",
+            "aws_dynamodb_table.transaction_table",
+            "aws_iam_role.lambda_exec",
+            "aws_lambda_function.card_transaction_lambda",
+            "aws_s3_bucket.transactions_report",
+            "aws_sqs_queue.create_request_card",
+            "data.aws_iam_policy_document.assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_lambda_event_source_mapping",
+      "name": "create_request_card_sqs",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "amazon_managed_kafka_event_source_config": [],
+            "arn": "arn:aws:lambda:us-west-1:572008280464:event-source-mapping:c016999e-f866-4a0b-9a6e-96a007ff43fd",
+            "batch_size": 1,
+            "bisect_batch_on_function_error": false,
+            "destination_config": [],
+            "document_db_event_source_config": [],
+            "enabled": true,
+            "event_source_arn": "arn:aws:sqs:us-west-1:572008280464:create-request-card-sqs",
+            "filter_criteria": [],
+            "function_arn": "arn:aws:lambda:us-west-1:572008280464:function:create-request-card-lambda",
+            "function_name": "arn:aws:lambda:us-west-1:572008280464:function:create-request-card-lambda",
+            "function_response_types": [],
+            "id": "c016999e-f866-4a0b-9a6e-96a007ff43fd",
+            "kms_key_arn": "",
+            "last_modified": "2025-09-08T19:17:10Z",
+            "last_processing_result": "",
+            "maximum_batching_window_in_seconds": 0,
+            "maximum_record_age_in_seconds": 0,
+            "maximum_retry_attempts": 0,
+            "metrics_config": [],
+            "parallelization_factor": 0,
+            "provisioned_poller_config": [],
+            "queues": [],
+            "region": "us-west-1",
+            "scaling_config": [],
+            "self_managed_event_source": [],
+            "self_managed_kafka_event_source_config": [],
+            "source_access_configuration": [],
+            "starting_position": "",
+            "starting_position_timestamp": "",
+            "state": "Enabled",
+            "state_transition_reason": "USER_INITIATED",
+            "tags": {},
+            "tags_all": {},
+            "topics": [],
+            "tumbling_window_in_seconds": 0,
+            "uuid": "c016999e-f866-4a0b-9a6e-96a007ff43fd"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_dynamodb_table.card_table",
+            "aws_dynamodb_table.card_table_error",
+            "aws_dynamodb_table.transaction_table",
+            "aws_iam_role.lambda_exec",
+            "aws_lambda_function.create_request_card_lambda",
+            "aws_s3_bucket.transactions_report",
+            "aws_sqs_queue.create_request_card",
+            "data.aws_iam_policy_document.assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_lambda_function",
+      "name": "card_activate_lambda",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "architectures": [
+              "x86_64"
+            ],
+            "arn": "arn:aws:lambda:us-west-1:572008280464:function:card-activate-lambda",
+            "code_sha256": "1t6ul6rt5m8vMgPE5W0MbDNffrOMq5QEIGHdLdolV88=",
+            "code_signing_config_arn": "",
+            "dead_letter_config": [],
+            "description": "",
+            "environment": [
+              {
+                "variables": {
+                  "CARD_TABLE_NAME": "card-table",
+                  "ERROR_TABLE_NAME": "card-table-error",
+                  "REPORT_BUCKET": "mi-reporte-transacciones-bucket-2025",
+                  "SQS_URL": "https://sqs.us-west-1.amazonaws.com/572008280464/create-request-card-sqs",
+                  "TRANSACTION_TABLE_NAME": "transaction-table"
+                }
+              }
+            ],
+            "ephemeral_storage": [
+              {
+                "size": 512
+              }
+            ],
+            "file_system_config": [],
+            "filename": "card-activate-lambda.zip",
+            "function_name": "card-activate-lambda",
+            "handler": "card-activate.handler",
+            "id": "card-activate-lambda",
+            "image_config": [],
+            "image_uri": "",
+            "invoke_arn": "arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:572008280464:function:card-activate-lambda/invocations",
+            "kms_key_arn": "",
+            "last_modified": "2025-09-09T13:04:03.000+0000",
+            "layers": [],
+            "logging_config": [
+              {
+                "application_log_level": "",
+                "log_format": "Text",
+                "log_group": "/aws/lambda/card-activate-lambda",
+                "system_log_level": ""
+              }
+            ],
+            "memory_size": 128,
+            "package_type": "Zip",
+            "publish": false,
+            "qualified_arn": "arn:aws:lambda:us-west-1:572008280464:function:card-activate-lambda:$LATEST",
+            "qualified_invoke_arn": "arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:572008280464:function:card-activate-lambda:$LATEST/invocations",
+            "region": "us-west-1",
+            "replace_security_groups_on_destroy": null,
+            "replacement_security_group_ids": null,
+            "reserved_concurrent_executions": -1,
+            "role": "arn:aws:iam::572008280464:role/ExecutionLambda",
+            "runtime": "nodejs22.x",
+            "s3_bucket": null,
+            "s3_key": null,
+            "s3_object_version": null,
+            "signing_job_arn": "",
+            "signing_profile_version_arn": "",
+            "skip_destroy": false,
+            "snap_start": [],
+            "source_code_hash": "1t6ul6rt5m8vMgPE5W0MbDNffrOMq5QEIGHdLdolV88=",
+            "source_code_size": 199265,
+            "source_kms_key_arn": "",
+            "tags": {},
+            "tags_all": {},
+            "timeout": 3,
+            "timeouts": null,
+            "tracing_config": [
+              {
+                "mode": "PassThrough"
+              }
+            ],
+            "version": "$LATEST",
+            "vpc_config": []
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "572008280464",
+            "function_name": "card-activate-lambda",
+            "region": "us-west-1"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6NjAwMDAwMDAwMDAwLCJ1cGRhdGUiOjYwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "aws_dynamodb_table.card_table",
+            "aws_dynamodb_table.card_table_error",
+            "aws_dynamodb_table.transaction_table",
+            "aws_iam_role.lambda_exec",
+            "aws_s3_bucket.transactions_report",
+            "aws_sqs_queue.create_request_card",
+            "data.aws_iam_policy_document.assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_lambda_function",
+      "name": "card_get_report_lambda",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "architectures": [
+              "x86_64"
+            ],
+            "arn": "arn:aws:lambda:us-west-1:572008280464:function:card-get-report-lambda",
+            "code_sha256": "FKReaagRGAVAa19OX10pmuRu0p0AVhWYUrYx0wN9WX4=",
+            "code_signing_config_arn": "",
+            "dead_letter_config": [],
+            "description": "",
+            "environment": [
+              {
+                "variables": {
+                  "CARD_TABLE_NAME": "card-table",
+                  "ERROR_TABLE_NAME": "card-table-error",
+                  "REPORT_BUCKET": "mi-reporte-transacciones-bucket-2025",
+                  "SQS_URL": "https://sqs.us-west-1.amazonaws.com/572008280464/create-request-card-sqs",
+                  "TRANSACTION_TABLE_NAME": "transaction-table"
+                }
+              }
+            ],
+            "ephemeral_storage": [
+              {
+                "size": 512
+              }
+            ],
+            "file_system_config": [],
+            "filename": "card-get-report-lambda.zip",
+            "function_name": "card-get-report-lambda",
+            "handler": "card-get-report.handler",
+            "id": "card-get-report-lambda",
+            "image_config": [],
+            "image_uri": "",
+            "invoke_arn": "arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:572008280464:function:card-get-report-lambda/invocations",
+            "kms_key_arn": "",
+            "last_modified": "2025-09-09T13:04:17.000+0000",
+            "layers": [],
+            "logging_config": [
+              {
+                "application_log_level": "",
+                "log_format": "Text",
+                "log_group": "/aws/lambda/card-get-report-lambda",
+                "system_log_level": ""
+              }
+            ],
+            "memory_size": 128,
+            "package_type": "Zip",
+            "publish": false,
+            "qualified_arn": "arn:aws:lambda:us-west-1:572008280464:function:card-get-report-lambda:$LATEST",
+            "qualified_invoke_arn": "arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:572008280464:function:card-get-report-lambda:$LATEST/invocations",
+            "region": "us-west-1",
+            "replace_security_groups_on_destroy": null,
+            "replacement_security_group_ids": null,
+            "reserved_concurrent_executions": -1,
+            "role": "arn:aws:iam::572008280464:role/ExecutionLambda",
+            "runtime": "nodejs22.x",
+            "s3_bucket": null,
+            "s3_key": null,
+            "s3_object_version": null,
+            "signing_job_arn": "",
+            "signing_profile_version_arn": "",
+            "skip_destroy": false,
+            "snap_start": [],
+            "source_code_hash": "FKReaagRGAVAa19OX10pmuRu0p0AVhWYUrYx0wN9WX4=",
+            "source_code_size": 285857,
+            "source_kms_key_arn": "",
+            "tags": {},
+            "tags_all": {},
+            "timeout": 3,
+            "timeouts": null,
+            "tracing_config": [
+              {
+                "mode": "PassThrough"
+              }
+            ],
+            "version": "$LATEST",
+            "vpc_config": []
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "572008280464",
+            "function_name": "card-get-report-lambda",
+            "region": "us-west-1"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6NjAwMDAwMDAwMDAwLCJ1cGRhdGUiOjYwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "aws_dynamodb_table.card_table",
+            "aws_dynamodb_table.card_table_error",
+            "aws_dynamodb_table.transaction_table",
+            "aws_iam_role.lambda_exec",
+            "aws_s3_bucket.transactions_report",
+            "aws_sqs_queue.create_request_card",
+            "data.aws_iam_policy_document.assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_lambda_function",
+      "name": "card_paid_credit_card_lambda",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "architectures": [
+              "x86_64"
+            ],
+            "arn": "arn:aws:lambda:us-west-1:572008280464:function:card-paid-credit-card-lambda",
+            "code_sha256": "4h+wYKZvD3K1GNMDefRHhHu8tXCriKgEMH+v6iBaXqI=",
+            "code_signing_config_arn": "",
+            "dead_letter_config": [],
+            "description": "",
+            "environment": [
+              {
+                "variables": {
+                  "CARD_TABLE_NAME": "card-table",
+                  "ERROR_TABLE_NAME": "card-table-error",
+                  "REPORT_BUCKET": "mi-reporte-transacciones-bucket-2025",
+                  "SQS_URL": "https://sqs.us-west-1.amazonaws.com/572008280464/create-request-card-sqs",
+                  "TRANSACTION_TABLE_NAME": "transaction-table"
+                }
+              }
+            ],
+            "ephemeral_storage": [
+              {
+                "size": 512
+              }
+            ],
+            "file_system_config": [],
+            "filename": "card-paid-credit-card-lambda.zip",
+            "function_name": "card-paid-credit-card-lambda",
+            "handler": "card-paid-credit-card.handler",
+            "id": "card-paid-credit-card-lambda",
+            "image_config": [],
+            "image_uri": "",
+            "invoke_arn": "arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:572008280464:function:card-paid-credit-card-lambda/invocations",
+            "kms_key_arn": "",
+            "last_modified": "2025-09-09T13:04:24.000+0000",
+            "layers": [],
+            "logging_config": [
+              {
+                "application_log_level": "",
+                "log_format": "Text",
+                "log_group": "/aws/lambda/card-paid-credit-card-lambda",
+                "system_log_level": ""
+              }
+            ],
+            "memory_size": 128,
+            "package_type": "Zip",
+            "publish": false,
+            "qualified_arn": "arn:aws:lambda:us-west-1:572008280464:function:card-paid-credit-card-lambda:$LATEST",
+            "qualified_invoke_arn": "arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:572008280464:function:card-paid-credit-card-lambda:$LATEST/invocations",
+            "region": "us-west-1",
+            "replace_security_groups_on_destroy": null,
+            "replacement_security_group_ids": null,
+            "reserved_concurrent_executions": -1,
+            "role": "arn:aws:iam::572008280464:role/ExecutionLambda",
+            "runtime": "nodejs22.x",
+            "s3_bucket": null,
+            "s3_key": null,
+            "s3_object_version": null,
+            "signing_job_arn": "",
+            "signing_profile_version_arn": "",
+            "skip_destroy": false,
+            "snap_start": [],
+            "source_code_hash": "4h+wYKZvD3K1GNMDefRHhHu8tXCriKgEMH+v6iBaXqI=",
+            "source_code_size": 199574,
+            "source_kms_key_arn": "",
+            "tags": {},
+            "tags_all": {},
+            "timeout": 3,
+            "timeouts": null,
+            "tracing_config": [
+              {
+                "mode": "PassThrough"
+              }
+            ],
+            "version": "$LATEST",
+            "vpc_config": []
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "572008280464",
+            "function_name": "card-paid-credit-card-lambda",
+            "region": "us-west-1"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6NjAwMDAwMDAwMDAwLCJ1cGRhdGUiOjYwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "aws_dynamodb_table.card_table",
+            "aws_dynamodb_table.card_table_error",
+            "aws_dynamodb_table.transaction_table",
+            "aws_iam_role.lambda_exec",
+            "aws_s3_bucket.transactions_report",
+            "aws_sqs_queue.create_request_card",
+            "data.aws_iam_policy_document.assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_lambda_function",
+      "name": "card_purchase_lambda",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "architectures": [
+              "x86_64"
+            ],
+            "arn": "arn:aws:lambda:us-west-1:572008280464:function:card-purchase-lambda",
+            "code_sha256": "rZ9kjkVSvYpaGwsUwzC2c+AjknqqnanlFva6uqpRoWk=",
+            "code_signing_config_arn": "",
+            "dead_letter_config": [],
+            "description": "",
+            "environment": [
+              {
+                "variables": {
+                  "CARD_TABLE_NAME": "card-table",
+                  "ERROR_TABLE_NAME": "card-table-error",
+                  "REPORT_BUCKET": "mi-reporte-transacciones-bucket-2025",
+                  "SQS_URL": "https://sqs.us-west-1.amazonaws.com/572008280464/create-request-card-sqs",
+                  "TRANSACTION_TABLE_NAME": "transaction-table"
+                }
+              }
+            ],
+            "ephemeral_storage": [
+              {
+                "size": 512
+              }
+            ],
+            "file_system_config": [],
+            "filename": "card-purchase-lambda.zip",
+            "function_name": "card-purchase-lambda",
+            "handler": "card-purchase.handler",
+            "id": "card-purchase-lambda",
+            "image_config": [],
+            "image_uri": "",
+            "invoke_arn": "arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:572008280464:function:card-purchase-lambda/invocations",
+            "kms_key_arn": "",
+            "last_modified": "2025-09-09T13:04:32.000+0000",
+            "layers": [],
+            "logging_config": [
+              {
+                "application_log_level": "",
+                "log_format": "Text",
+                "log_group": "/aws/lambda/card-purchase-lambda",
+                "system_log_level": ""
+              }
+            ],
+            "memory_size": 128,
+            "package_type": "Zip",
+            "publish": false,
+            "qualified_arn": "arn:aws:lambda:us-west-1:572008280464:function:card-purchase-lambda:$LATEST",
+            "qualified_invoke_arn": "arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:572008280464:function:card-purchase-lambda:$LATEST/invocations",
+            "region": "us-west-1",
+            "replace_security_groups_on_destroy": null,
+            "replacement_security_group_ids": null,
+            "reserved_concurrent_executions": -1,
+            "role": "arn:aws:iam::572008280464:role/ExecutionLambda",
+            "runtime": "nodejs22.x",
+            "s3_bucket": null,
+            "s3_key": null,
+            "s3_object_version": null,
+            "signing_job_arn": "",
+            "signing_profile_version_arn": "",
+            "skip_destroy": false,
+            "snap_start": [],
+            "source_code_hash": "rZ9kjkVSvYpaGwsUwzC2c+AjknqqnanlFva6uqpRoWk=",
+            "source_code_size": 199470,
+            "source_kms_key_arn": "",
+            "tags": {},
+            "tags_all": {},
+            "timeout": 3,
+            "timeouts": null,
+            "tracing_config": [
+              {
+                "mode": "PassThrough"
+              }
+            ],
+            "version": "$LATEST",
+            "vpc_config": []
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "572008280464",
+            "function_name": "card-purchase-lambda",
+            "region": "us-west-1"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6NjAwMDAwMDAwMDAwLCJ1cGRhdGUiOjYwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "aws_dynamodb_table.card_table",
+            "aws_dynamodb_table.card_table_error",
+            "aws_dynamodb_table.transaction_table",
+            "aws_iam_role.lambda_exec",
+            "aws_s3_bucket.transactions_report",
+            "aws_sqs_queue.create_request_card",
+            "data.aws_iam_policy_document.assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_lambda_function",
+      "name": "card_transaction_lambda",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "architectures": [
+              "x86_64"
+            ],
+            "arn": "arn:aws:lambda:us-west-1:572008280464:function:card-transaction-lambda",
+            "code_sha256": "MiEK0dUBQkI14iV6FHyoL4iUWQhP84FU5mLoRMkJv8E=",
+            "code_signing_config_arn": "",
+            "dead_letter_config": [],
+            "description": "",
+            "environment": [
+              {
+                "variables": {
+                  "CARD_TABLE_NAME": "card-table",
+                  "ERROR_TABLE_NAME": "card-table-error",
+                  "REPORT_BUCKET": "mi-reporte-transacciones-bucket-2025",
+                  "SQS_URL": "https://sqs.us-west-1.amazonaws.com/572008280464/create-request-card-sqs",
+                  "TRANSACTION_TABLE_NAME": "transaction-table"
+                }
+              }
+            ],
+            "ephemeral_storage": [
+              {
+                "size": 512
+              }
+            ],
+            "file_system_config": [],
+            "filename": "card-transaction-lambda.zip",
+            "function_name": "card-transaction-lambda",
+            "handler": "card-transaction.handler",
+            "id": "card-transaction-lambda",
+            "image_config": [],
+            "image_uri": "",
+            "invoke_arn": "arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:572008280464:function:card-transaction-lambda/invocations",
+            "kms_key_arn": "",
+            "last_modified": "2025-09-09T13:04:39.000+0000",
+            "layers": [],
+            "logging_config": [
+              {
+                "application_log_level": "",
+                "log_format": "Text",
+                "log_group": "/aws/lambda/card-transaction-lambda",
+                "system_log_level": ""
+              }
+            ],
+            "memory_size": 128,
+            "package_type": "Zip",
+            "publish": false,
+            "qualified_arn": "arn:aws:lambda:us-west-1:572008280464:function:card-transaction-lambda:$LATEST",
+            "qualified_invoke_arn": "arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:572008280464:function:card-transaction-lambda:$LATEST/invocations",
+            "region": "us-west-1",
+            "replace_security_groups_on_destroy": null,
+            "replacement_security_group_ids": null,
+            "reserved_concurrent_executions": -1,
+            "role": "arn:aws:iam::572008280464:role/ExecutionLambda",
+            "runtime": "nodejs22.x",
+            "s3_bucket": null,
+            "s3_key": null,
+            "s3_object_version": null,
+            "signing_job_arn": "",
+            "signing_profile_version_arn": "",
+            "skip_destroy": false,
+            "snap_start": [],
+            "source_code_hash": "MiEK0dUBQkI14iV6FHyoL4iUWQhP84FU5mLoRMkJv8E=",
+            "source_code_size": 199355,
+            "source_kms_key_arn": "",
+            "tags": {},
+            "tags_all": {},
+            "timeout": 3,
+            "timeouts": null,
+            "tracing_config": [
+              {
+                "mode": "PassThrough"
+              }
+            ],
+            "version": "$LATEST",
+            "vpc_config": []
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "572008280464",
+            "function_name": "card-transaction-lambda",
+            "region": "us-west-1"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6NjAwMDAwMDAwMDAwLCJ1cGRhdGUiOjYwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "aws_dynamodb_table.card_table",
+            "aws_dynamodb_table.card_table_error",
+            "aws_dynamodb_table.transaction_table",
+            "aws_iam_role.lambda_exec",
+            "aws_s3_bucket.transactions_report",
+            "aws_sqs_queue.create_request_card",
+            "data.aws_iam_policy_document.assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_lambda_function",
+      "name": "create_request_card_lambda",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "architectures": [
+              "x86_64"
+            ],
+            "arn": "arn:aws:lambda:us-west-1:572008280464:function:create-request-card-lambda",
+            "code_sha256": "Ve9PHo+QWx4FmMASl7WBAk9S1Ar2Yrly5aILcURYfBk=",
+            "code_signing_config_arn": "",
+            "dead_letter_config": [],
+            "description": "",
+            "environment": [
+              {
+                "variables": {
+                  "CARD_TABLE_NAME": "card-table",
+                  "ERROR_TABLE_NAME": "card-table-error",
+                  "REPORT_BUCKET": "mi-reporte-transacciones-bucket-2025",
+                  "SQS_URL": "https://sqs.us-west-1.amazonaws.com/572008280464/create-request-card-sqs",
+                  "TRANSACTION_TABLE_NAME": "transaction-table"
+                }
+              }
+            ],
+            "ephemeral_storage": [
+              {
+                "size": 512
+              }
+            ],
+            "file_system_config": [],
+            "filename": "create-request-card-lambda.zip",
+            "function_name": "create-request-card-lambda",
+            "handler": "create-request-card.handler",
+            "id": "create-request-card-lambda",
+            "image_config": [],
+            "image_uri": "",
+            "invoke_arn": "arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:572008280464:function:create-request-card-lambda/invocations",
+            "kms_key_arn": "",
+            "last_modified": "2025-09-09T13:04:10.000+0000",
+            "layers": [],
+            "logging_config": [
+              {
+                "application_log_level": "",
+                "log_format": "Text",
+                "log_group": "/aws/lambda/create-request-card-lambda",
+                "system_log_level": ""
+              }
+            ],
+            "memory_size": 128,
+            "package_type": "Zip",
+            "publish": false,
+            "qualified_arn": "arn:aws:lambda:us-west-1:572008280464:function:create-request-card-lambda:$LATEST",
+            "qualified_invoke_arn": "arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:572008280464:function:create-request-card-lambda:$LATEST/invocations",
+            "region": "us-west-1",
+            "replace_security_groups_on_destroy": null,
+            "replacement_security_group_ids": null,
+            "reserved_concurrent_executions": -1,
+            "role": "arn:aws:iam::572008280464:role/ExecutionLambda",
+            "runtime": "nodejs22.x",
+            "s3_bucket": null,
+            "s3_key": null,
+            "s3_object_version": null,
+            "signing_job_arn": "",
+            "signing_profile_version_arn": "",
+            "skip_destroy": false,
+            "snap_start": [],
+            "source_code_hash": "Ve9PHo+QWx4FmMASl7WBAk9S1Ar2Yrly5aILcURYfBk=",
+            "source_code_size": 199175,
+            "source_kms_key_arn": "",
+            "tags": {},
+            "tags_all": {},
+            "timeout": 3,
+            "timeouts": null,
+            "tracing_config": [
+              {
+                "mode": "PassThrough"
+              }
+            ],
+            "version": "$LATEST",
+            "vpc_config": []
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "572008280464",
+            "function_name": "create-request-card-lambda",
+            "region": "us-west-1"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6NjAwMDAwMDAwMDAwLCJ1cGRhdGUiOjYwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "aws_dynamodb_table.card_table",
+            "aws_dynamodb_table.card_table_error",
+            "aws_dynamodb_table.transaction_table",
+            "aws_iam_role.lambda_exec",
+            "aws_s3_bucket.transactions_report",
+            "aws_sqs_queue.create_request_card",
+            "data.aws_iam_policy_document.assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_lambda_permission",
+      "name": "allow_api_gateway_card_activate",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "action": "lambda:InvokeFunction",
+            "event_source_token": null,
+            "function_name": "card-activate-lambda",
+            "function_url_auth_type": null,
+            "id": "AllowAPIGatewayInvokeCardActivate",
+            "principal": "apigateway.amazonaws.com",
+            "principal_org_id": null,
+            "qualifier": "",
+            "region": "us-west-1",
+            "source_account": null,
+            "source_arn": "arn:aws:execute-api:us-west-1:572008280464:zp0g7qvwg3/*/POST/card/activate",
+            "statement_id": "AllowAPIGatewayInvokeCardActivate",
+            "statement_id_prefix": ""
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "572008280464",
+            "function_name": "card-activate-lambda",
+            "qualifier": null,
+            "region": "us-west-1",
+            "statement_id": "AllowAPIGatewayInvokeCardActivate"
+          },
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_rest_api.card_api",
+            "aws_dynamodb_table.card_table",
+            "aws_dynamodb_table.card_table_error",
+            "aws_dynamodb_table.transaction_table",
+            "aws_iam_role.lambda_exec",
+            "aws_lambda_function.card_activate_lambda",
+            "aws_s3_bucket.transactions_report",
+            "aws_sqs_queue.create_request_card",
+            "data.aws_iam_policy_document.assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_lambda_permission",
+      "name": "allow_api_gateway_card_create",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "action": "lambda:InvokeFunction",
+            "event_source_token": null,
+            "function_name": "create-request-card-lambda",
+            "function_url_auth_type": null,
+            "id": "AllowAPIGatewayInvokeCardCreate",
+            "principal": "apigateway.amazonaws.com",
+            "principal_org_id": null,
+            "qualifier": "",
+            "region": "us-west-1",
+            "source_account": null,
+            "source_arn": "arn:aws:execute-api:us-west-1:572008280464:zp0g7qvwg3/*/POST/card/create",
+            "statement_id": "AllowAPIGatewayInvokeCardCreate",
+            "statement_id_prefix": ""
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "572008280464",
+            "function_name": "create-request-card-lambda",
+            "qualifier": null,
+            "region": "us-west-1",
+            "statement_id": "AllowAPIGatewayInvokeCardCreate"
+          },
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_rest_api.card_api",
+            "aws_dynamodb_table.card_table",
+            "aws_dynamodb_table.card_table_error",
+            "aws_dynamodb_table.transaction_table",
+            "aws_iam_role.lambda_exec",
+            "aws_lambda_function.create_request_card_lambda",
+            "aws_s3_bucket.transactions_report",
+            "aws_sqs_queue.create_request_card",
+            "data.aws_iam_policy_document.assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_lambda_permission",
+      "name": "allow_api_gateway_card_get_report",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "action": "lambda:InvokeFunction",
+            "event_source_token": null,
+            "function_name": "card-get-report-lambda",
+            "function_url_auth_type": null,
+            "id": "AllowAPIGatewayInvokeCardGetReport",
+            "principal": "apigateway.amazonaws.com",
+            "principal_org_id": null,
+            "qualifier": "",
+            "region": "us-west-1",
+            "source_account": null,
+            "source_arn": "arn:aws:execute-api:us-west-1:572008280464:zp0g7qvwg3/*/GET/card/get-report/*",
+            "statement_id": "AllowAPIGatewayInvokeCardGetReport",
+            "statement_id_prefix": ""
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "572008280464",
+            "function_name": "card-get-report-lambda",
+            "qualifier": null,
+            "region": "us-west-1",
+            "statement_id": "AllowAPIGatewayInvokeCardGetReport"
+          },
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_rest_api.card_api",
+            "aws_dynamodb_table.card_table",
+            "aws_dynamodb_table.card_table_error",
+            "aws_dynamodb_table.transaction_table",
+            "aws_iam_role.lambda_exec",
+            "aws_lambda_function.card_get_report_lambda",
+            "aws_s3_bucket.transactions_report",
+            "aws_sqs_queue.create_request_card",
+            "data.aws_iam_policy_document.assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_lambda_permission",
+      "name": "allow_api_gateway_card_paid_credit_card",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "action": "lambda:InvokeFunction",
+            "event_source_token": null,
+            "function_name": "card-paid-credit-card-lambda",
+            "function_url_auth_type": null,
+            "id": "AllowAPIGatewayInvokeCardPaidCreditCard",
+            "principal": "apigateway.amazonaws.com",
+            "principal_org_id": null,
+            "qualifier": "",
+            "region": "us-west-1",
+            "source_account": null,
+            "source_arn": "arn:aws:execute-api:us-west-1:572008280464:zp0g7qvwg3/*/POST/card/paid-credit-card",
+            "statement_id": "AllowAPIGatewayInvokeCardPaidCreditCard",
+            "statement_id_prefix": ""
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "572008280464",
+            "function_name": "card-paid-credit-card-lambda",
+            "qualifier": null,
+            "region": "us-west-1",
+            "statement_id": "AllowAPIGatewayInvokeCardPaidCreditCard"
+          },
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_rest_api.card_api",
+            "aws_dynamodb_table.card_table",
+            "aws_dynamodb_table.card_table_error",
+            "aws_dynamodb_table.transaction_table",
+            "aws_iam_role.lambda_exec",
+            "aws_lambda_function.card_paid_credit_card_lambda",
+            "aws_s3_bucket.transactions_report",
+            "aws_sqs_queue.create_request_card",
+            "data.aws_iam_policy_document.assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_lambda_permission",
+      "name": "allow_api_gateway_card_purchase",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "action": "lambda:InvokeFunction",
+            "event_source_token": null,
+            "function_name": "card-purchase-lambda",
+            "function_url_auth_type": null,
+            "id": "AllowAPIGatewayInvokeCardPurchase",
+            "principal": "apigateway.amazonaws.com",
+            "principal_org_id": null,
+            "qualifier": "",
+            "region": "us-west-1",
+            "source_account": null,
+            "source_arn": "arn:aws:execute-api:us-west-1:572008280464:zp0g7qvwg3/*/POST/card/purchase",
+            "statement_id": "AllowAPIGatewayInvokeCardPurchase",
+            "statement_id_prefix": ""
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "572008280464",
+            "function_name": "card-purchase-lambda",
+            "qualifier": null,
+            "region": "us-west-1",
+            "statement_id": "AllowAPIGatewayInvokeCardPurchase"
+          },
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_rest_api.card_api",
+            "aws_dynamodb_table.card_table",
+            "aws_dynamodb_table.card_table_error",
+            "aws_dynamodb_table.transaction_table",
+            "aws_iam_role.lambda_exec",
+            "aws_lambda_function.card_purchase_lambda",
+            "aws_s3_bucket.transactions_report",
+            "aws_sqs_queue.create_request_card",
+            "data.aws_iam_policy_document.assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_lambda_permission",
+      "name": "allow_api_gateway_card_transaction",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "action": "lambda:InvokeFunction",
+            "event_source_token": null,
+            "function_name": "card-transaction-lambda",
+            "function_url_auth_type": null,
+            "id": "AllowAPIGatewayInvokeCardTransaction",
+            "principal": "apigateway.amazonaws.com",
+            "principal_org_id": null,
+            "qualifier": "",
+            "region": "us-west-1",
+            "source_account": null,
+            "source_arn": "arn:aws:execute-api:us-west-1:572008280464:zp0g7qvwg3/*/POST/card/transaction/*",
+            "statement_id": "AllowAPIGatewayInvokeCardTransaction",
+            "statement_id_prefix": ""
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "572008280464",
+            "function_name": "card-transaction-lambda",
+            "qualifier": null,
+            "region": "us-west-1",
+            "statement_id": "AllowAPIGatewayInvokeCardTransaction"
+          },
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_rest_api.card_api",
+            "aws_dynamodb_table.card_table",
+            "aws_dynamodb_table.card_table_error",
+            "aws_dynamodb_table.transaction_table",
+            "aws_iam_role.lambda_exec",
+            "aws_lambda_function.card_transaction_lambda",
+            "aws_s3_bucket.transactions_report",
+            "aws_sqs_queue.create_request_card",
+            "data.aws_iam_policy_document.assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_s3_bucket",
+      "name": "transactions_report",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "acceleration_status": "",
+            "acl": "private",
+            "arn": "arn:aws:s3:::mi-reporte-transacciones-bucket-2025",
+            "bucket": "mi-reporte-transacciones-bucket-2025",
+            "bucket_domain_name": "mi-reporte-transacciones-bucket-2025.s3.amazonaws.com",
+            "bucket_prefix": "",
+            "bucket_region": "us-west-1",
+            "bucket_regional_domain_name": "mi-reporte-transacciones-bucket-2025.s3.us-west-1.amazonaws.com",
+            "cors_rule": [],
+            "force_destroy": false,
+            "grant": [
+              {
+                "id": "e6187f21085c6e6c8d868c107bef10f502feffeb3e63160958526a339dbc53c1",
+                "permissions": [
+                  "FULL_CONTROL"
+                ],
+                "type": "CanonicalUser",
+                "uri": ""
+              }
+            ],
+            "hosted_zone_id": "Z2F56UZL2M1ACD",
+            "id": "mi-reporte-transacciones-bucket-2025",
+            "lifecycle_rule": [],
+            "logging": [],
+            "object_lock_configuration": [],
+            "object_lock_enabled": false,
+            "policy": "",
+            "region": "us-west-1",
+            "replication_configuration": [],
+            "request_payer": "BucketOwner",
+            "server_side_encryption_configuration": [
+              {
+                "rule": [
+                  {
+                    "apply_server_side_encryption_by_default": [
+                      {
+                        "kms_master_key_id": "",
+                        "sse_algorithm": "AES256"
+                      }
+                    ],
+                    "bucket_key_enabled": false
+                  }
+                ]
+              }
+            ],
+            "tags": {},
+            "tags_all": {},
+            "timeouts": null,
+            "versioning": [
+              {
+                "enabled": false,
+                "mfa_delete": false
+              }
+            ],
+            "website": [],
+            "website_domain": null,
+            "website_endpoint": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "572008280464",
+            "bucket": "mi-reporte-transacciones-bucket-2025",
+            "region": "us-west-1"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjM2MDAwMDAwMDAwMDAsInJlYWQiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19"
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_sqs_queue",
+      "name": "create_request_card",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:sqs:us-west-1:572008280464:create-request-card-sqs",
+            "content_based_deduplication": false,
+            "deduplication_scope": "",
+            "delay_seconds": 0,
+            "fifo_queue": false,
+            "fifo_throughput_limit": "",
+            "id": "https://sqs.us-west-1.amazonaws.com/572008280464/create-request-card-sqs",
+            "kms_data_key_reuse_period_seconds": 300,
+            "kms_master_key_id": "",
+            "max_message_size": 262144,
+            "message_retention_seconds": 345600,
+            "name": "create-request-card-sqs",
+            "name_prefix": "",
+            "policy": "",
+            "receive_wait_time_seconds": 0,
+            "redrive_allow_policy": "",
+            "redrive_policy": "",
+            "region": "us-west-1",
+            "sqs_managed_sse_enabled": true,
+            "tags": {},
+            "tags_all": {},
+            "timeouts": null,
+            "url": "https://sqs.us-west-1.amazonaws.com/572008280464/create-request-card-sqs",
+            "visibility_timeout_seconds": 30
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "572008280464",
+            "region": "us-west-1",
+            "url": "https://sqs.us-west-1.amazonaws.com/572008280464/create-request-card-sqs"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxODAwMDAwMDAwMDAsImRlbGV0ZSI6MTgwMDAwMDAwMDAwLCJ1cGRhdGUiOjE4MDAwMDAwMDAwMH19"
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_sqs_queue",
+      "name": "error_create_request_card",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:sqs:us-west-1:572008280464:error-create-request-card-sqs",
+            "content_based_deduplication": false,
+            "deduplication_scope": "",
+            "delay_seconds": 0,
+            "fifo_queue": false,
+            "fifo_throughput_limit": "",
+            "id": "https://sqs.us-west-1.amazonaws.com/572008280464/error-create-request-card-sqs",
+            "kms_data_key_reuse_period_seconds": 300,
+            "kms_master_key_id": "",
+            "max_message_size": 262144,
+            "message_retention_seconds": 345600,
+            "name": "error-create-request-card-sqs",
+            "name_prefix": "",
+            "policy": "",
+            "receive_wait_time_seconds": 0,
+            "redrive_allow_policy": "",
+            "redrive_policy": "",
+            "region": "us-west-1",
+            "sqs_managed_sse_enabled": true,
+            "tags": {},
+            "tags_all": {},
+            "timeouts": null,
+            "url": "https://sqs.us-west-1.amazonaws.com/572008280464/error-create-request-card-sqs",
+            "visibility_timeout_seconds": 30
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "572008280464",
+            "region": "us-west-1",
+            "url": "https://sqs.us-west-1.amazonaws.com/572008280464/error-create-request-card-sqs"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxODAwMDAwMDAwMDAsImRlbGV0ZSI6MTgwMDAwMDAwMDAwLCJ1cGRhdGUiOjE4MDAwMDAwMDAwMH19"
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}

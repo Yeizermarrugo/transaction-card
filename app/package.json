@@ -5,29 +5,37 @@
     "main": "index.js",
     "scripts": {
         "start": "ts-node service/card-service/handler.ts",
-        "build": "esbuild src/handlers/*.ts --bundle --outdir=dist/ --platform=node"
+        "build": "esbuild src/handlers/*.ts --bundle --outdir=dist/ --platform=node --format=cjs"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "devDependencies": {
-        "@types/aws-lambda": "^8.10.152",
-        "@types/node": "^24.3.1",
+        "@types/aws-lambda": "^8.10.155",
+        "@types/node": "^24.7.2",
+        "@types/redis": "^4.0.11",
         "@types/uuid": "^10.0.0",
+        "aws-sdk": "^2.1692.0",
+        "csv-parser": "^3.2.0",
+        "esbuild": "^0.25.10",
+        "redis": "^5.8.3",
         "ts-node": "^10.9.2",
-        "typescript": "^5.9.2"
+        "typescript": "^5.9.3"
     },
     "dependencies": {
         "@aws-sdk/client-dynamodb": "^3.882.0",
-        "@aws-sdk/client-s3": "^3.882.0",
+        "@aws-sdk/client-s3": "^3.908.0",
         "@aws-sdk/client-secrets-manager": "^3.882.0",
         "@aws-sdk/client-sqs": "^3.882.0",
         "@aws-sdk/lib-dynamodb": "^3.882.0",
         "@aws-sdk/s3-request-presigner": "^3.882.0",
-        "aws-sdk": "^2.1692.0",
-        "dotenv": "^17.2.2",
+        "@middy/http-error-handler": "^6.4.5",
+        "@middy/http-multipart-body-parser": "^6.4.5",
         "aws-lambda": "^1.0.7",
-        "esbuild": "^0.25.9",
+        "axios": "^1.12.2",
+        "csvtojson": "^2.0.10",
+        "dotenv": "^17.2.2",
+        "parse-multipart": "^1.0.4",
         "uuid": "^11.1.0"
     }
 }
