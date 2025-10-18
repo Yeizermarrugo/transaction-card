@@ -4,7 +4,7 @@ const { createClient } = require("redis");
 const { Readable } = require("stream");
 import type { RedisClientType } from "redis";
 
-const s3 = new S3Client({});
+const s3 = new S3Client({region: process.env.AWS_REGION || "us-west-1"});
 const REDIS_HOST = process.env.REDIS_HOST || "";
 const REDIS_PORT = process.env.REDIS_PORT || "6379";
 const REDIS_KEY = process.env.CATALOG_REDIS_KEY || "catalog";
@@ -43,22 +43,22 @@ function extractCatalogFile(event: any) {
 			// Extrae el contenido binario (csv) entre los headers y el siguiente boundary
 			const fileMatch = part.match(/\r\n\r\n([\s\S]*?)\r\n$/);
 			if (!fileMatch) continue;
-			const fileBuffer = Buffer.from(fileMatch[1], "utf8"); // Si el encoding no funciona, prueba "latin1"
+			const fileBuffer = Buffer.from(fileMatch[1] ?? "", "utf8"); // Si el encoding no funciona, prueba "latin1"
 			return { filename, fileMime, fileBuffer };
 		}
 	}
 	return null;
 }
 
-function parseCsvFromBuffer(buffer: any) {
+function parseCsvFromBuffer(buffer: Buffer | string): Promise<Record<string, string | number>[]> {
 	return new Promise((resolve, reject) => {
-		const results = [];
+		const results: Record<string, string | number>[] = [];
 		const utf8Str = buffer.toString("utf8").replace(/^\uFEFF/, "");
 		const readable = Readable.from([utf8Str]);
-		let headersMap = null;
+		let headersMap: string[] | null = null;
 		readable
 			.pipe(csvParser())
-			.on("headers", (headers) => {
+			.on("headers", (headers: string[]) => {
 				headersMap = headers.map((h) =>
 					h
 						.replace(/\s+/g, "_")
@@ -66,11 +66,12 @@ function parseCsvFromBuffer(buffer: any) {
 						.toLowerCase()
 				);
 			})
-			.on("data", (data) => {
-				const normalized = {};
+			.on("data", (data: Record<string, string | undefined>) => {
+				const normalized: Record<string, string | number> = {};
 				Object.keys(data).forEach((k, idx) => {
 					const nk = headersMap ? headersMap[idx] || k : k;
-					let val = data[k];
+					let rawVal = data[k] ?? "";
+					let val: string | number = rawVal;
 					if (typeof val === "string") {
 						const cleaned = val.trim();
 						const normalizedNum = cleaned.replace(/\s+/g, "").replace(",", ".");
@@ -82,7 +83,7 @@ function parseCsvFromBuffer(buffer: any) {
 				results.push(normalized);
 			})
 			.on("end", () => resolve(results))
-			.on("error", (err) => reject(err));
+			.on("error", (err: any) => reject(err));
 	});
 }
 
@@ -130,7 +131,7 @@ exports.handler = async (event: any) => {
 				jsonKey
 			})
 		};
-	} catch (err) {
+	} catch (err: any) {
 		return {
 			statusCode: 500,
 			body: JSON.stringify({ message: "Error procesando archivo", error: err.message })

@@ -1,8 +1,8 @@
-import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
-import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
-import { Readable } from "stream";
-import csvParser from "csv-parser";
-import { getRedisClient } from "../services/redis.js";
+const { APIGatewayProxyEvent, APIGatewayProxyResult } = require("aws-lambda");
+const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
+const { Readable } = require("stream");
+const csvParser = require("csv-parser");
+const { getRedisClient } = require("../services/redis.js");
 
 const s3Client = new S3Client({
   region: process.env.AWS_REGION || "us-east-2",

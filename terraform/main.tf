@@ -190,6 +190,10 @@ resource "aws_iam_role_policy_attachment" "lambda_vpc_access_managed" {
 resource "aws_elasticache_subnet_group" "main" {
   name       = "redis-subnet-group"
   subnet_ids = [aws_subnet.private_1.id, aws_subnet.private_2.id]
+    lifecycle {
+    # prevent_destroy = true
+    ignore_changes  = [subnet_ids]
+  }
 }
 
 resource "aws_elasticache_cluster" "main_redis" {
